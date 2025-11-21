@@ -1,0 +1,45 @@
+function criarPastasPadraoNegocio() {
+  // ID da pasta principal onde será criada a estrutura
+  // 👉 Substitua pelo ID da pasta do seu Google Drive (a parte depois de "folders/")
+  const pastaRaizId = 'COLE_AQUI_O_ID_DA_PASTA_PRINCIPAL';
+  const pastaRaiz = DriveApp.getFolderById(pastaRaizId);
+
+  // Estrutura hierárquica
+  const estrutura = {
+    "00. GERENCIA": [
+      "00.01. PLANEJAMENTO ESTRATEGICO",
+      "00.02. CULTURA EMPRESARIAL",
+      "00.03. PROPOSITO-MISSAO-VISAO-VALORES"
+    ],
+    "01. ADMINISTRATIVO": [
+      "01.01. DOCUMENTOS DA EMPRESA",
+      "01.02. CONTABILIDADE",
+      "01.03. FINANCEIRO"
+    ],
+    "02. MARKETING": [
+      "02.01. CAMPANHAS ONLINE",
+      "02.02. IDENTIDADE VISUAL",
+      "02.03. FOTOS DOS AVATARES",
+      "02.04. DEPOIMENTOS",
+      "02.05. HISTORIAS E REGISTROS"
+    ],
+    "03. VENDAS": [
+      "03.01. PROPOSTAS",
+      "03.02. ORCAMENTOS",
+      "03.03. CONTRATOS"
+    ]
+  };
+
+  // Criar as pastas principais e suas subpastas
+  for (const [pastaPrincipal, subpastas] of Object.entries(estrutura)) {
+    const novaPastaPrincipal = pastaRaiz.createFolder(pastaPrincipal);
+    Logger.log("Criada pasta: " + novaPastaPrincipal.getName());
+
+    subpastas.forEach(nomeSubpasta => {
+      const subpasta = novaPastaPrincipal.createFolder(nomeSubpasta);
+      Logger.log("  ↳ Subpasta criada: " + subpasta.getName());
+    });
+  }
+
+  Logger.log("✅ Estrutura criada com sucesso!");
+}
