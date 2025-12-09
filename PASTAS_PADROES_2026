@@ -1,10 +1,10 @@
 function criarPastasPadraoNegocio() {
   // ID da pasta principal onde será criada a estrutura
-  // 👉 Substitua pelo ID da pasta do seu Google Drive (a parte depois de "folders/")
+  // 👉 Substitua pelo ID da pasta do seu Google Drive
   const pastaRaizId = 'COLE_AQUI_O_ID_DA_PASTA_PRINCIPAL';
   const pastaRaiz = DriveApp.getFolderById(pastaRaizId);
 
-  // Estrutura hierárquica
+  // Estrutura hierárquica completa
   const estrutura = {
     "00. GERENCIA": [
       "00.01. PLANEJAMENTO ESTRATEGICO",
@@ -12,11 +12,15 @@ function criarPastasPadraoNegocio() {
       "00.03. PROPOSITO-MISSAO-VISAO-VALORES",
       "00.04. TECNOLOGIAS E DADOS"
     ],
+
     "01. ADMINISTRATIVO": [
       "01.01. DOCUMENTOS DA EMPRESA",
-      "01.02. CONTABILIDADE",
-      "01.03. FINANCEIRO"
+      "01.02. FINANCEIRO",
+      "01.03. PESSOAS",
+      "01.04. PROCESSOS INTERNOS E TREINAMENTOS",
+      "01.05. PLANO DE COMUNICACAO"
     ],
+
     "02. MARKETING": [
       "02.01. CAMPANHAS ONLINE",
       "02.02. IDENTIDADE VISUAL",
@@ -24,10 +28,18 @@ function criarPastasPadraoNegocio() {
       "02.04. DEPOIMENTOS",
       "02.05. HISTORIAS E REGISTROS"
     ],
+
     "03. VENDAS": [
       "03.01. PROPOSTAS",
       "03.02. ORCAMENTOS",
       "03.03. CONTRATOS"
+    ],
+
+    "05. PRODUTOS": [
+      "05.01. GUIAS",
+      "05.02. LIVROS",
+      "05.03. CURSOS",
+      "05.04. MENTORIAS"
     ]
   };
 
@@ -43,4 +55,5 @@ function criarPastasPadraoNegocio() {
   }
 
   Logger.log("✅ Estrutura criada com sucesso!");
+  SpreadsheetApp.getUi().alert("Estrutura criada com sucesso no Google Drive!");
 }
